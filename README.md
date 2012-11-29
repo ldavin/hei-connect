@@ -1,4 +1,4 @@
-# HEI E-Campus API
+# HEI Connect
 
 ## What is this?
 
