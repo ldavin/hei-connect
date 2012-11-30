@@ -1,24 +1,22 @@
 module Konosys
   class Login
-    def initialize(username, password)
+
+    LOGIN_URL = 'http://e-campus.hei.fr/KonosysProd/PC_MV_login.aspx'
+
+    def initialize(browser, username, password)
+      @browser = browser
       @username = username
       @password = password
-
-      @login_url = 'http://e-campus.hei.fr/KonosysProd/PC_MV_login.aspx'
-
-      @browser = Celerity::Browser.new
-      @browser.javascript_enabled = false
     end
 
     def proceed
-      @browser.goto(@login_url)
+      @browser.goto(LOGIN_URL)
       @browser.text_field(:id, 'Username').value = @username
       @browser.text_field(:id, 'Password').value = @password
       @browser.button(:name, 'Button1').click
 
-      if @browser.url == @login_url
-        @browser.close
-        false
+      if @browser.url == LOGIN_URL
+        raise Exceptions::LoginError
       else
         true
       end
