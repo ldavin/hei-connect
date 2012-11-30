@@ -5,8 +5,13 @@ require 'goliath'
 require 'grape'
 require 'celerity'
 
+# Models
+Dir["app/models/*.rb"].each {|file| require file }
+
 # Konosys
 Dir["app/konosys/*.rb"].each {|file| require file }
+Dir["app/konosys/exceptions/*.rb"].each {|file| require file }
+Dir["app/konosys/actions/*.rb"].each {|file| require file }
 
 # API
 Dir["app/api/api_v*.rb"].each {|file| require file }
