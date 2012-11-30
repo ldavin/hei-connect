@@ -1,5 +1,7 @@
 # HEI Connect
 
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/ldavin/hei-connect)
+
 ## What is this?
 
 Une api écrite en Ruby basée sur le microframework [Grape](http://github.com/intridea/grape).
