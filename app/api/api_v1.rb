@@ -9,14 +9,14 @@ module API
         schedule = Konosys::Actions::Schedule.new(params[:username], params[:password])
 
         begin
-          week = schedule.get_current_week
+          weeks = schedule.fetch_current_and_next_week
         rescue Konosys::Exceptions::LoginError
           error! 'Login failed', 401
         end
 
         schedule.finish
 
-        present week, with: Konosys::Models::Week::Entity
+        present weeks, with: Konosys::Models::Week::Entity
       end
     end
 

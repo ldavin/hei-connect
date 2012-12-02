@@ -4,27 +4,19 @@ module Konosys
 
       SCHEDULE_URL = 'http://e-campus.hei.fr/KonosysProd/interfaces/MonPlanning_Utilisateur_Lot.aspx'
 
-      def get_current_week
+      def fetch_current_and_next_week
         login
 
-        # Fetch schedule page source
         @browser.goto(SCHEDULE_URL)
-        source = @browser.xml
+        current_week_source = @browser.xml
+        @browser.button(:id, 'semsuiv').click # Move to next week
+        next_week_source = @browser.xml
 
-        # Fetch date from hidden form input
-        date_components = source.scan(/name="_DateDebutSemaine_hidden" type="text" value="(\d+)\/(\d+)\/(\d+)"/)
-        # date_components is like [['20', '11', '1990']]
-        date = Date.new(*date_components.flatten.reverse.collect { |i| i.to_i })
+        weeks = Array.new
+        weeks.push Models::Week.new(current_week_source)
+        weeks.push Models::Week.new(next_week_source)
 
-        # Fetch courses
-        courses = Array.new
-        data = source.scan(/AjouterRDV\((\d+),(\d+),(\d+),(\d+),'(.+?)',/i) # Data comes from a JS source
-        data.each do |d|
-          courses.push(Models::Course.new(date, d))
-        end
-
-        # Create and return a week object
-        Models::Week.new(date, courses)
+        weeks
       end
     end
   end
