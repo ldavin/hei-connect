@@ -1,14 +1,15 @@
 module Konosys
   module Models
     class Course
-      attr_accessor :day, :hour, :minutes, :date, :length, :code, :name, :room, :type, :teacher
+      attr_accessor :date, :length, :code, :name, :room, :group, :type, :teacher
 
       def initialize(date, details)
         # Todo: Update date!
-        @date = date
-        @day = details[0]
-        @hour = details[1]
-        @minutes = details[2]
+        day = details[0]
+        hour = details[1]
+        minutes = details[2]
+        course_date = date + (day.to_i - 1)
+        @date = Time.mktime(course_date.year, course_date.month, course_date.day, hour.to_i, minutes.to_i)
         @length = details[3]
 
         details = details[4].split('<br>')
@@ -21,12 +22,12 @@ module Konosys
           @type = details[3]
           @teacher = details[4] if details.count == 5
         else
-          @name = details[4]
+          @name = details.join ' '
         end
       end
 
       class Entity < Grape::Entity
-        expose :date, :length, :type, :code, :name, :room, :teacher
+        expose :date, :length, :type, :group, :code, :name, :room, :teacher
       end
     end
   end
