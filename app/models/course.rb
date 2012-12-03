@@ -12,7 +12,7 @@ module Konosys
         @date = Time.mktime(course_date.year, course_date.month, course_date.day, hour.to_i, minutes.to_i)
         @length = details[3]
 
-        details = details[4].split('<br>')
+        details = details[4].gsub(/#{Regexp.escape('\\')}/, '').split('<br>')
         if details.count >= 4
           sub_details = details[0].split('-')
           @code = sub_details[0][0..-2]
