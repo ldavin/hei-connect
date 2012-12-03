@@ -1,7 +1,7 @@
 module Konosys
   module Models
     class Course
-      attr_accessor :date, :length, :code, :name, :room, :group, :type, :teacher
+      attr_reader :date, :length, :code, :name, :room, :group, :type, :teacher
 
       def initialize(date, details)
         # Todo: Update date!

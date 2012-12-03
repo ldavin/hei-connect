@@ -1,7 +1,7 @@
 module Konosys
   module Models
     class Week
-      attr_accessor :number, :courses
+      attr_reader :number, :courses
 
       def initialize(page_source)
         # Fetch date from hidden form input
