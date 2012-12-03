@@ -3,9 +3,9 @@ module API
 
     version 'v1', :using => :path
 
-    resource :test do
-      desc 'Test fetching the courses of the current week'
-      post :schedule do
+    resource :schedule do
+      desc 'Fetch the courses of the current and next week'
+      get '/' do
         schedule = Konosys::Actions::Schedule.new(params[:username], params[:password])
 
         begin
