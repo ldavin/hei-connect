@@ -17,22 +17,21 @@ module API
       }
     end
 
-    resource :schedule do
-      desc 'Fetch the courses of the current and next week'
-      get '/' do
-        schedule = Konosys::Actions::Schedule.new(params[:username], params[:password])
 
-        begin
-          weeks = schedule.fetch_current_and_next_week
-        rescue Konosys::Exceptions::LoginError
-          logger.error "Login failed for #{params[:username]}"
-          error!({error: 'Login failed'}, 401)
-        end
+    desc 'Fetch the courses of the current and next week'
+    get :schedule do
+      schedule = Konosys::Actions::Schedule.new(params[:username], params[:password])
 
-        schedule.finish
-
-        present weeks, with: Konosys::Models::Week::Entity
+      begin
+        weeks = schedule.fetch_current_and_next_week
+      rescue Konosys::Exceptions::LoginError
+        logger.error "Login failed for #{params[:username]}"
+        error!({error: 'Login failed'}, 401)
       end
+
+      schedule.finish
+
+      present weeks, with: Konosys::Models::Week::Entity
     end
 
   end
