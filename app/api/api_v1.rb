@@ -11,9 +11,10 @@ module API
 
     before do
       logger.info {
-        "#{params[:route_info].route_method} #{params[:route_info].route_version}/" +
-            "#{params[:route_info].route_path.split('/')[2..-1].join('/').gsub(/\(.*\)/, '')}" +
-            " for #{params[:username]}"
+        log = "#{params[:route_info].route_method} #{params[:route_info].route_version}/" +
+            "#{params[:route_info].route_path.split('/')[2..-1].join('/').gsub(/\(.*\)/, '')}"
+        log += " for #{params[:username]}" if params[:username]
+        log
       }
     end
 
