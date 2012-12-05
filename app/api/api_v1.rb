@@ -19,7 +19,7 @@ module API
     end
 
     desc 'Test the given credentials and return if they are valid'
-    get :credentials_validity do
+    get :credentials_validation do
       validation = Konosys::Actions::Validation.new(params[:username], params[:password])
 
       begin
