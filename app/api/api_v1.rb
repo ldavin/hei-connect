@@ -35,5 +35,11 @@ module API
       present weeks, with: Konosys::Models::Week::Entity
     end
 
+    resource :system do
+      desc 'Simple get request that returns OK'
+      get :status do
+        'OK'
+      end
+    end
   end
 end
