@@ -26,7 +26,7 @@ module API
         validation.perform
       rescue Konosys::Exceptions::LoginError
         logger.error "Login failed for #{params[:username]}"
-        {valid: false}
+        false
       end
     end
 
