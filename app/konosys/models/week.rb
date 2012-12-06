@@ -1,6 +1,6 @@
 module Konosys
   module Models
-    class Week
+    class Week < Konosys::Models::Base
       attr_reader :number, :courses
 
       def initialize(page_source)
@@ -17,9 +17,11 @@ module Konosys
         end
       end
 
-      class Entity < Grape::Entity
-        expose :number
-        expose :courses, using: Course::Entity
+      def as_json
+        {
+            number: @number,
+            courses: @courses
+        }
       end
     end
   end

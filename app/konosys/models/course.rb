@@ -1,6 +1,6 @@
 module Konosys
   module Models
-    class Course
+    class Course < Konosys::Models::Base
       attr_reader :date, :length, :code, :name, :room, :group, :type, :teacher
 
       def initialize(date, details)
@@ -26,8 +26,17 @@ module Konosys
         end
       end
 
-      class Entity < Grape::Entity
-        expose :date, :length, :type, :group, :code, :name, :room, :teacher
+      def as_json
+        {
+            date: @date,
+            length: @length,
+            type: @type,
+            group: @group,
+            code: @code,
+            name: @name,
+            room: @room,
+            teacher: @teacher
+        }
       end
     end
   end
