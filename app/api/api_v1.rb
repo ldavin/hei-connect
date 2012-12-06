@@ -48,13 +48,13 @@ module API
         schedule.finish
       end
 
-      present weeks, with: Konosys::Models::Week::Entity
+      {weeks: weeks}
     end
 
     resource :system do
       desc 'Simple get request that returns OK'
       get :status do
-        'OK'
+        {status: 'ok'}
       end
     end
   end
