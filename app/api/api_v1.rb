@@ -28,6 +28,8 @@ module API
       rescue Konosys::Exceptions::LoginError
         logger.error "Login failed for #{params[:username]}"
         false
+      ensure
+        validation.finish
       end
 
       {valid: result}
@@ -42,9 +44,9 @@ module API
       rescue Konosys::Exceptions::LoginError
         logger.error "Login failed for #{params[:username]}"
         error!({error: 'Login failed'}, 401)
+      ensure
+        schedule.finish
       end
-
-      schedule.finish
 
       present weeks, with: Konosys::Models::Week::Entity
     end
