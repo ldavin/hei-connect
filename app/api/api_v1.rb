@@ -19,15 +19,18 @@ module API
     end
 
     desc 'Test the given credentials and return if they are valid'
-    get :credentials_validation do
+    get :validate_credentials do
       validation = Konosys::Actions::Validation.new(params[:username], params[:password])
 
-      begin
+      result = begin
         validation.perform
+        true
       rescue Konosys::Exceptions::LoginError
         logger.error "Login failed for #{params[:username]}"
         false
       end
+
+      {valid: result}
     end
 
     desc 'Fetch the courses of the current and next week'
