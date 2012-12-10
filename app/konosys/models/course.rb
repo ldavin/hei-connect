@@ -9,7 +9,7 @@ module Konosys
         hour = details[1]
         minutes = details[2]
         course_date = date + (day.to_i - 1)
-        @date = Time.mktime(course_date.year, course_date.month, course_date.day, hour.to_i, minutes.to_i)
+        @date = Time.utc(course_date.year, course_date.month, course_date.day, hour.to_i, minutes.to_i)
         @length = details[3].to_i
 
         details = details[4].gsub(/#{Regexp.escape('\\')}/, '').split('<br>')
