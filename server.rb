@@ -7,9 +7,9 @@ require 'celerity'
 require 'active_support/core_ext/time/calculations'
 
 # Konosys
+Dir["app/konosys/exceptions/*.rb"].each { |file| require file }
 Dir["app/konosys/*.rb"].each { |file| require file }
 Dir["app/konosys/models/*.rb"].each { |file| require file }
-Dir["app/konosys/exceptions/*.rb"].each { |file| require file }
 Dir["app/konosys/actions/*.rb"].each { |file| require file }
 
 # API

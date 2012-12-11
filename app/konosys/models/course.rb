@@ -1,6 +1,6 @@
 module Konosys
   module Models
-    class Course < Konosys::Models::Base
+    class Course < Konosys::Model
       attr_reader :date, :length, :code, :name, :room, :group, :type, :teacher
 
       def initialize(date, details)

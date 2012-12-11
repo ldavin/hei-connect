@@ -1,6 +1,6 @@
 module Konosys
   module Models
-    class Week < Konosys::Models::Base
+    class Week < Konosys::Model
       attr_reader :number, :courses
 
       def initialize(page_source)
