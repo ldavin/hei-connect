@@ -4,6 +4,7 @@ require "bundler/setup"
 require 'goliath'
 require 'grape'
 require 'celerity'
+require 'active_support/core_ext/time/calculations'
 
 # Konosys
 Dir["app/konosys/*.rb"].each { |file| require file }

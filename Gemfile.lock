@@ -53,6 +53,7 @@ GEM
       rack (>= 1.0.0)
     rack-respond_to (0.9.8)
       rack-accept-media-types (>= 0.6)
+    tzinfo (0.3.35)
     virtus (0.5.2)
       backports (~> 2.6.1)
 
@@ -61,6 +62,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport
   celerity
   goliath
   grape
+  tzinfo
