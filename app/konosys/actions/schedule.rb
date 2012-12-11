@@ -8,9 +8,9 @@ module Konosys
         login
 
         @browser.goto(SCHEDULE_URL)
-        current_week_source = @browser.xml.encode('utf-8')
+        current_week_source = @browser.xml.force_encoding('utf-8')
         @browser.button(:id, 'semsuiv').click # Move to next week
-        next_week_source = @browser.xml.encode('utf-8')
+        next_week_source = @browser.xml.force_encoding('utf-8')
 
         weeks = Array.new
         weeks.push Models::Week.new(current_week_source)
