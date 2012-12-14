@@ -16,14 +16,14 @@ module Konosys
         details = details[4].gsub(/#{Regexp.escape('\\')}/, '').split('<br>')
         if details.count >= 4
           sub_details = details[0].split('-')
-          @code = URI.escape sub_details[0][0..-2]
-          @name = URI.escape sub_details[1][1..-1]
-          @room = URI.escape details[1][6..-1]
-          @group = URI.escape details[2][7..-2]
-          @type = URI.escape details[3]
-          @teacher = URI.escape details[4] if details.count == 5
+          @code = sub_details[0][0..-2]
+          @name = sub_details[1][1..-1]
+          @room = details[1][6..-1]
+          @group = details[2][7..-2]
+          @type = details[3]
+          @teacher = details[4] if details.count == 5
         else
-          @name = URI.escape details.join ' '
+          @name = details.join ' '
         end
       end
 
