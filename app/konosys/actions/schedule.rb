@@ -2,7 +2,7 @@ module Konosys
   module Actions
     class Schedule < Konosys::Action
 
-      SCHEDULE_URL = 'http://e-campus.hei.fr/KonosysProd/interfaces/MonPlanning_Utilisateur_Lot.aspx'
+      SCHEDULE_URL = 'https://e-campus.hei.fr/KonosysProd/interfaces/MonPlanning_Utilisateur_Lot.aspx'
 
       def fetch_current_and_next_week
         login
