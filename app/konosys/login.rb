@@ -1,7 +1,7 @@
 module Konosys
   class Login
 
-    LOGIN_URL = 'https://e-campus.hei.fr/KonosysProd/PC_MV_login.aspx'
+    LOGIN_URL = 'http://e-campus.hei.fr/KonosysProd/PC_MV_login.aspx'
 
     def initialize(browser, username, password)
       @browser = browser
