@@ -20,16 +20,16 @@ module API
 
     desc 'Test the given credentials and return if they are valid'
     get :validate_credentials do
-      validation = Konosys::Actions::Validation.new(params[:username], params[:password])
+      action = Konosys::Actions::Validation.new(params[:username], params[:password])
 
       result = begin
-        validation.perform
+        action.perform
         true
       rescue Konosys::Exceptions::LoginError
         logger.error "Login failed for #{params[:username]}"
         false
       ensure
-        validation.finish
+        action.finish
       end
 
       {valid: result}
@@ -37,15 +37,15 @@ module API
 
     desc 'Fetch the courses of the current and next week'
     get :schedule do
-      schedule = Konosys::Actions::Schedule.new(params[:username], params[:password])
+      action = Konosys::Actions::Schedule.new(params[:username], params[:password])
 
       begin
-        weeks = schedule.fetch_current_and_next_week
+        weeks = action.fetch_current_and_next_week
       rescue Konosys::Exceptions::LoginError
         logger.error "Login failed for #{params[:username]}"
         error!({error: 'Login failed'}, 401)
       ensure
-        schedule.finish
+        action.finish
       end
 
       {weeks: weeks}
