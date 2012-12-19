@@ -1,10 +1,9 @@
 module Konosys
   module Models
     class Course < Konosys::Model
-      attr_reader :date, :length, :code, :name, :room, :group, :type, :teacher
+      attr_reader :date, :id, :length, :code, :name, :room, :group, :type, :teacher
 
       def initialize(date, details)
-        # Todo: Update date!
         day = details[0]
         hour = details[1]
         minutes = details[2]
@@ -12,6 +11,7 @@ module Konosys
         @date = ActiveSupport::TimeZone['Paris'].parse("#{course_date.year}/#{course_date.month}/#{course_date.day}" +
                                                            " #{hour.to_i}h#{minutes.to_i}")
         @length = details[3].to_i
+        @id = details[5].to_i
 
         details = details[4].gsub(/#{Regexp.escape('\\')}/, '').split('<br>')
         if details.count >= 4
@@ -29,6 +29,7 @@ module Konosys
 
       def as_json
         {
+            id: @id,
             date: @date,
             length: @length,
             type: @type,

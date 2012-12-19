@@ -11,7 +11,7 @@ module Konosys
 
         # Fetch courses
         @courses = Array.new
-        data = page_source.scan(/AjouterRDV\((\d+),(\d+),(\d+),(\d+),'(.+?)',/i)
+        data = page_source.scan(/AjouterRDV\((\d+),(\d+),(\d+),(\d+),'((?:(?<=\\)[']|[^'])*)',.*'(\d{2,})',/i)
         data.each do |line|
           @courses.push(Models::Course.new(date, line))
         end
