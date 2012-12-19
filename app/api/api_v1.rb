@@ -51,6 +51,24 @@ module API
       {weeks: weeks}
     end
 
+    resource :grades do
+      desc 'Fetch the user\'s grades sessions id and name'
+      get :sessions do
+        action = Konosys::Actions::GradesSessions.new(params[:username], params[:password])
+
+        begin
+          sessions = action.fetch_all_sessions
+        rescue Konosys::Exceptions::LoginError
+          logger.error "Login failed for #{params[:username]}"
+          error!({error: 'Login failed'}, 401)
+        ensure
+          action.finish
+        end
+
+        {sessions: sessions}
+      end
+    end
+
     resource :system do
       desc 'Simple get request that returns OK'
       get :status do
