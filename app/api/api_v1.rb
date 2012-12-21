@@ -85,6 +85,24 @@ module API
       end
     end
 
+    resource :absences do
+      desc 'Fetch the user\'s absences sessions id, name, and student_id'
+      get :sessions do
+        action = Konosys::Actions::AbsencesSessions.new(params[:username], params[:password])
+
+        begin
+          sessions = action.fetch_all_sessions
+        rescue Konosys::Exceptions::LoginError
+          logger.error "Login failed for #{params[:username]}"
+          error!({error: 'Login failed'}, 401)
+        ensure
+          action.finish
+        end
+
+        {sessions: sessions}
+      end
+    end
+
     resource :system do
       desc 'Simple get request that returns OK'
       get :status do
