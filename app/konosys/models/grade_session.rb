@@ -1,6 +1,6 @@
 module Konosys
   module Models
-    class Session < Konosys::Model
+    class GradeSession < Konosys::Model
       attr_reader :id, :name
 
       def initialize(data)

@@ -17,7 +17,7 @@ module Konosys
         sessions = Array.new
         data = @browser.xml.scan(/creerLignes .+ title='([^']*)'.+id=(\d+).+id='col2/i)
         data.each do |line|
-          sessions.push(Models::Session.new(line))
+          sessions.push(Models::GradeSession.new(line))
         end
 
         sessions
