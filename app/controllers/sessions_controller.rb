@@ -14,4 +14,18 @@ class SessionsController < ApplicationController
 
     expose sessions
   end
+
+  def absences
+    client = Konosys::Actions::AbsencesSessions.new(params[:username], params[:password], params[:user_id])
+
+    begin
+      sessions = client.fetch
+    rescue Konosys::Exceptions::LoginError
+      error! :unauthenticated
+    end
+
+    client.finish
+
+    expose sessions
+  end
 end
