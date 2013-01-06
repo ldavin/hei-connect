@@ -51,6 +51,7 @@ GEM
     journey (1.0.4)
     jruby-openssl (0.7.7)
       bouncy-castle-java (>= 1.5.0146.1)
+    json (1.7.6)
     json (1.7.6-java)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -62,6 +63,10 @@ GEM
     multi_xml (0.5.1)
     net-http-persistent (2.8)
     polyglot (0.3.3)
+    puma (1.6.3)
+      rack (~> 1.2)
+    puma (1.6.3-java)
+      rack (~> 1.2)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -120,6 +125,7 @@ DEPENDENCIES
   api_smith
   celerity
   jruby-openssl
+  puma
   rails (= 3.2.9)
   rails-api
   rocket_pants
