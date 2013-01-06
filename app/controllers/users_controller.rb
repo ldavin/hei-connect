@@ -12,6 +12,6 @@ class UsersController < ApplicationController
 
     client.finish
 
-    expose user
+    resource user
   end
 end

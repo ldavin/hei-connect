@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
     client.finish
 
-    expose sessions
+    collection sessions
   end
 
   def absences
@@ -26,6 +26,6 @@ class SessionsController < ApplicationController
 
     client.finish
 
-    expose sessions
+    collection sessions
   end
 end
