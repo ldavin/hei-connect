@@ -117,6 +117,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-jdbcsqlite3-adapter
+  api_smith
   celerity
   jruby-openssl
   rails (= 3.2.9)

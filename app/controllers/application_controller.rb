@@ -1,2 +1,2 @@
-class ApplicationController < ActionController::API
+class ApplicationController < RocketPants::Base
 end
