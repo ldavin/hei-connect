@@ -4,9 +4,9 @@ module Konosys
 
       class AbsenceSessionEntity < APISmith::Smash
         # Session ID, eg: 51
-        property :id
+        property :id, :transformer => :to_i
         # Session name, eg: Cycle ing\u00e9nieur 2013-3A
-        property :name
+        property :name, :transformer => lambda { |t| t.strip }
       end
 
       ABSENCES_SESSIONS_URL = 'http://e-campus.hei.fr/KonosysProd/interfaces/interface_lister_MesAbsence_etudiant.aspx'
@@ -28,7 +28,7 @@ module Konosys
         sessions = Array.new
         data = @browser.select_list(:id, 'ddl_sessionprogramme').as_xml.delete("\n").scan(/<option value="(\d+)">(.+?)<\/option>/)
         data.each do |raw_session|
-          sessions.push(AbsenceSessionEntity.new id: raw_session[0].to_i, name: raw_session[1].strip)
+          sessions.push(AbsenceSessionEntity.new id: raw_session[0], name: raw_session[1])
         end
 
         sessions

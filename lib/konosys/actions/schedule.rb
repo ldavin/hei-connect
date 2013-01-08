@@ -4,35 +4,35 @@ module Konosys
 
       class WeekEntity < APISmith::Smash
         # Week's number in the year, eg: 23
-        property :number
+        property :number, :transformer => :to_i
         # CourseEntity collection
         property :courses
       end
 
       class CourseEntity < APISmith::Smash
         # Course's id, eg: 149264
-        property :id
+        property :id, :transformer => :to_i
         # Datetime with timezone (ActiveSupport::TimeZone)
         property :date
         # Course's length in minutes, eg: 90
-        property :length
+        property :length, :transformer => :to_i
         # Course's type, eg: Cours
-        property :type
+        property :type, :transformer => lambda { |t| t.strip }
         # Course's group, eg: 4ITI
-        property :group
+        property :group, :transformer => lambda { |t| t.strip }
         # Course's code, eg: ITI038
-        property :code
+        property :code, :transformer => lambda { |t| t.strip }
         # Course's name, eg: Ergonomie des IHM
-        property :name
+        property :name, :transformer => lambda { |t| t.strip }
         # Course's room, eg: ET50
-        property :room
+        property :room, :transformer => lambda { |t| t.strip }
         # Course's TeacherEntity collection
         property :teachers
       end
 
       class TeacherEntity < APISmith::Smash
         # Teacher's name, eg: LAST-NAME First-name
-        property :name
+        property :name, :transformer => lambda { |t| t.strip }
       end
 
       SCHEDULE_URL = 'http://e-campus.hei.fr/KonosysProd/interfaces/MonPlanning_Utilisateur_Lot.aspx'
@@ -75,8 +75,7 @@ module Konosys
         course_day = first_day_of_week + day.to_i - 1
         date = ActiveSupport::TimeZone['Paris'].parse("#{course_day.year}/#{course_day.month}/#{course_day.day}" +
                                                           " #{hour.to_i}h#{minute.to_i}")
-        length = data[3].to_i
-        id = data[5].to_i
+        length, id = data[3], data[5]
 
         course = CourseEntity.new date: date, length: length, id: id
 
