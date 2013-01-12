@@ -12,6 +12,10 @@ group :development do
   gem 'activerecord-jdbcsqlite3-adapter'
 end
 
+group :production do
+  gem 'activerecord-jdbcsqlite3-adapter'
+end
+
 gem 'celerity'
 
 gem 'puma'
