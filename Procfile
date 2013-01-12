@@ -1,1 +1,1 @@
-web: bundle exec jruby server.rb -sv -e prod -p $PORT
+web: bundle exec puma -p $PORT -e $RACK_ENV
