@@ -13,7 +13,7 @@ group :development do
 end
 
 group :production do
-  gem 'activerecord-jdbcsqlite3-adapter'
+  gem 'activerecord-jdbcpostgresql-adapter'
 end
 
 gem 'celerity'
