@@ -16,6 +16,5 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: jdbcpostgresql
-  username: username
-  password: password
+  adapter: sqlite3
+  database: db/production.sqlite3
