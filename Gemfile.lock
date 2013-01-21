@@ -66,6 +66,7 @@ GEM
     multi_json (1.5.0)
     multi_xml (0.5.2)
     net-http-persistent (2.8)
+    newrelic_rpm (3.5.5.38)
     polyglot (0.3.3)
     puma (1.6.3)
       rack (~> 1.2)
@@ -107,6 +108,7 @@ GEM
       moneta
       railties (~> 3.0)
       will_paginate (~> 3.0)
+    rocket_pants-rpm (1.0.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -130,7 +132,9 @@ DEPENDENCIES
   api_smith
   celerity
   jruby-openssl
+  newrelic_rpm
   puma
   rails (= 3.2.11)
   rails-api
   rocket_pants
+  rocket_pants-rpm

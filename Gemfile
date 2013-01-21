@@ -19,3 +19,6 @@ end
 gem 'celerity'
 
 gem 'puma'
+
+gem 'newrelic_rpm'
+gem 'rocket_pants-rpm'
