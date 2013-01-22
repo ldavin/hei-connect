@@ -18,11 +18,7 @@ Quelle que soit la méthode utilisée (commande `curl`, script en java ou autre)
 L'API tourne en réalité sur [JRuby](http://jruby.org/), qui permet d'interpréter le code ruby depuis la JVM, et ainsi créer des interconnections entre le code Ruby et Java. La gem celerity facilite ce travail, et permet de jouer avec HtmlUnit comme si c'était une bibliothèque Ruby classique.
 
 ## Documentation
-Article(s) wiki / paragraphes à créer
-
-## A faire d'urgence
-* Se former sur les tests et tester l'API
-* Régler les problèmes d'[encodage](https://github.com/ldavin/hei-connect/issues/2)
+Avant la rédaction d'une vraie documentation, il est possible de [jouer avec l'API grâce dans une console web](https://apigee.com/ldavin/embed/console/hei-connect). Toutes les méthodes de l'API sont listées. En remplaçant les exemples par de vrais identifiants e-campus, il est possible de d'appeler l'API et de voir comment elle réagit.
 
 ## Les projets autour d'HEI-Connect
 ### HEI-Connect

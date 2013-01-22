@@ -1,0 +1,203 @@
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:apigee="http://api.apigee.com/wadl/2010/07/"
+             xmlns="http://wadl.dev.java.net/2009/02"
+             xsi:schemaLocation="http://wadl.dev.java.net/2009/02 http://apigee.com/schemas/wadl-schema.xsd http://api.apigee.com/wadl/2010/07/ http://apigee.com/schemas/apigee-wadl-extensions.xsd">
+
+    <resources base="http://api.hei-connect.eu/1">
+
+        <resource path="/user">
+            <param name="username" required="true" type="xsd:string" style="query" default="h12344">
+                <doc>
+                    The user's e-campus id.
+                </doc>
+            </param>
+            
+            <param name="password" required="true" type="xsd:string" style="query" default="password">
+                <doc>
+                    The user's e-campus password.
+                </doc>
+            </param>
+            
+            <method id="user" name="GET" apigee:displayName="User details">
+                <apigee:tags>
+                    <apigee:tag primary="true">Details</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="false"/>
+
+                <apigee:example url="/user"/>
+
+                <doc>
+                    A method returning the user's details if the API managed to log in e-campus.
+                </doc>
+            </method>
+        </resource>
+        
+        <resource path="/schedule">
+            <param name="username" required="true" type="xsd:string" style="query" default="h12344">
+                <doc>
+                    The user's e-campus id.
+                </doc>
+            </param>
+            
+            <param name="password" required="true" type="xsd:string" style="query" default="password">
+                <doc>
+                    The user's e-campus password.
+                </doc>
+            </param>
+            
+            <method id="schedule" name="GET" apigee:displayName="User's schedule">
+                <apigee:tags>
+                    <apigee:tag primary="true">Details</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="false"/>
+
+                <apigee:example url="/schedule"/>
+
+                <doc>
+                    A method returning the user's schedule for the current week, and the following one.
+                </doc>
+            </method>
+        </resource>
+
+        <resource path="/sessions/grades">        
+        	<param name="username" required="true" type="xsd:string" style="query" default="h12344">
+                <doc>
+                    The user's e-campus id.
+                </doc>
+            </param>
+            
+            <param name="password" required="true" type="xsd:string" style="query" default="password">
+                <doc>
+                    The user's e-campus password.
+                </doc>
+            </param>
+        
+            <param name="student_id" required="false" type="xsd:integer" style="query" default="23123">
+                <doc>
+                    An e-campus internal ID needed to fetch the sessions with less page loads. Can be obtained with the user's details.
+                </doc>
+            </param>
+
+            <method id="grades_sessions" name="GET" apigee:displayName="Grades's sessions">
+                <apigee:tags>
+                    <apigee:tag primary="true">Grades</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="false"/>
+
+                <apigee:example url="/sessions/grades"/>
+
+                <doc>
+                    A method returning the session list of the user's grades. Knowing the sessions is mandatory to retrieve the associated grades.
+                </doc>
+            </method>
+        </resource>
+        
+        <resource path="/sessions/absences">
+        	<param name="username" required="true" type="xsd:string" style="query" default="h12344">
+                <doc>
+                    The user's e-campus id.
+                </doc>
+            </param>
+            
+            <param name="password" required="true" type="xsd:string" style="query" default="password">
+                <doc>
+                    The user's e-campus password.
+                </doc>
+            </param>
+        
+            <param name="user_id" required="false" type="xsd:integer" style="query" default="53123">
+                <doc>
+                    An e-campus internal ID needed to fetch the sessions with less page loads. Can be obtained with the user's details.
+                </doc>
+            </param>
+
+            <method id="absences_sessions" name="GET" apigee:displayName="Absences's sessions">
+                <apigee:tags>
+                    <apigee:tag primary="true">Absences</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="false"/>
+
+                <apigee:example url="/sessions/absences"/>
+
+                <doc>
+                    A method returning the session list of the user's absences. Knowing the sessions is mandatory to retrieve the associated absences.
+                </doc>
+            </method>
+        </resource>
+    
+    	<resource path="/grades">
+        	<param name="username" required="true" type="xsd:string" style="query" default="h12344">
+                <doc>
+                    The user's e-campus id.
+                </doc>
+            </param>
+            
+            <param name="password" required="true" type="xsd:string" style="query" default="password">
+                <doc>
+                    The user's e-campus password.
+                </doc>
+            </param>
+        
+            <param name="session_id" required="true" type="xsd:integer" style="query" default="12345">
+                <doc>
+                    The session for which the grades should be fetched. The sessions list can be retrieved in the grades's sessions.
+                </doc>
+            </param>
+
+            <method id="grades" name="GET" apigee:displayName="Grades">
+                <apigee:tags>
+                    <apigee:tag primary="true">Grades</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="false"/>
+
+                <apigee:example url="/grades"/>
+
+                <doc>
+                    A method returning the user's grades for the specified session.
+                </doc>
+            </method>
+        </resource>
+        
+        <resource path="/absences">
+        	<param name="username" required="true" type="xsd:string" style="query" default="h12344">
+                <doc>
+                    The user's e-campus id.
+                </doc>
+            </param>
+            
+            <param name="password" required="true" type="xsd:string" style="query" default="password">
+                <doc>
+                    The user's e-campus password.
+                </doc>
+            </param>
+        
+            <param name="session_id" required="true" type="xsd:integer" style="query" default="51">
+                <doc>
+                    The session for which the absences should be fetched. The sessions list can be retrieved in the absences's sessions.
+                </doc>
+            </param>
+
+            <method id="absences" name="GET" apigee:displayName="Absences">
+                <apigee:tags>
+                    <apigee:tag primary="true">Absences</apigee:tag>
+                </apigee:tags>
+
+                <apigee:authentication required="false"/>
+
+                <apigee:example url="/absences"/>
+
+                <doc>
+                    A method returning the user's absences for the specified session.
+                </doc>
+            </method>
+        </resource>
+
+    </resources>
+
+</application>
