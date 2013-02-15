@@ -12,13 +12,13 @@
                     The user's e-campus id.
                 </doc>
             </param>
-            
+
             <param name="password" required="true" type="xsd:string" style="query" default="password">
                 <doc>
                     The user's e-campus password.
                 </doc>
             </param>
-            
+
             <method id="user" name="GET" apigee:displayName="User details">
                 <apigee:tags>
                     <apigee:tag primary="true">Details</apigee:tag>
@@ -33,20 +33,20 @@
                 </doc>
             </method>
         </resource>
-        
+
         <resource path="/schedule">
             <param name="username" required="true" type="xsd:string" style="query" default="h12344">
                 <doc>
                     The user's e-campus id.
                 </doc>
             </param>
-            
+
             <param name="password" required="true" type="xsd:string" style="query" default="password">
                 <doc>
                     The user's e-campus password.
                 </doc>
             </param>
-            
+
             <method id="schedule" name="GET" apigee:displayName="User's schedule">
                 <apigee:tags>
                     <apigee:tag primary="true">Details</apigee:tag>
@@ -62,19 +62,19 @@
             </method>
         </resource>
 
-        <resource path="/sessions/grades">        
+        <resource path="/sessions/grades">
         	<param name="username" required="true" type="xsd:string" style="query" default="h12344">
                 <doc>
                     The user's e-campus id.
                 </doc>
             </param>
-            
+
             <param name="password" required="true" type="xsd:string" style="query" default="password">
                 <doc>
                     The user's e-campus password.
                 </doc>
             </param>
-        
+
             <param name="student_id" required="false" type="xsd:integer" style="query" default="23123">
                 <doc>
                     An e-campus internal ID needed to fetch the sessions with less page loads. Can be obtained with the user's details.
@@ -95,20 +95,20 @@
                 </doc>
             </method>
         </resource>
-        
+
         <resource path="/sessions/absences">
         	<param name="username" required="true" type="xsd:string" style="query" default="h12344">
                 <doc>
                     The user's e-campus id.
                 </doc>
             </param>
-            
+
             <param name="password" required="true" type="xsd:string" style="query" default="password">
                 <doc>
                     The user's e-campus password.
                 </doc>
             </param>
-        
+
             <param name="user_id" required="false" type="xsd:integer" style="query" default="53123">
                 <doc>
                     An e-campus internal ID needed to fetch the sessions with less page loads. Can be obtained with the user's details.
@@ -129,20 +129,26 @@
                 </doc>
             </method>
         </resource>
-    
+
     	<resource path="/grades">
         	<param name="username" required="true" type="xsd:string" style="query" default="h12344">
                 <doc>
                     The user's e-campus id.
                 </doc>
             </param>
-            
+
             <param name="password" required="true" type="xsd:string" style="query" default="password">
                 <doc>
                     The user's e-campus password.
                 </doc>
             </param>
-        
+
+            <param name="user_id" required="true" type="xsd:integer" style="query" default="53123">
+              <doc>
+                An e-campus internal ID. Can be obtained with the user's details.
+              </doc>
+            </param>
+
             <param name="session_id" required="true" type="xsd:integer" style="query" default="12345">
                 <doc>
                     The session for which the grades should be fetched. The sessions list can be retrieved in the grades's sessions.
@@ -163,20 +169,20 @@
                 </doc>
             </method>
         </resource>
-        
+
         <resource path="/absences">
         	<param name="username" required="true" type="xsd:string" style="query" default="h12344">
                 <doc>
                     The user's e-campus id.
                 </doc>
             </param>
-            
+
             <param name="password" required="true" type="xsd:string" style="query" default="password">
                 <doc>
                     The user's e-campus password.
                 </doc>
             </param>
-        
+
             <param name="session_id" required="true" type="xsd:integer" style="query" default="51">
                 <doc>
                     The session for which the absences should be fetched. The sessions list can be retrieved in the absences's sessions.
