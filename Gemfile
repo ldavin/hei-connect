@@ -17,6 +17,7 @@ group :production do
 end
 
 gem 'celerity'
+gem 'mechanize'
 
 gem 'puma'
 

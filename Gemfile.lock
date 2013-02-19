@@ -43,6 +43,8 @@ GEM
     bouncy-castle-java (1.5.0146.1)
     builder (3.0.4)
     celerity (0.9.2)
+    domain_name (0.5.7)
+      unf (~> 0.0.3)
     erubis (2.7.0)
     hashie (1.2.0)
     hike (1.2.1)
@@ -61,12 +63,24 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mechanize (2.5.1)
+      domain_name (~> 0.5, >= 0.5.1)
+      mime-types (~> 1.17, >= 1.17.2)
+      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-persistent (~> 2.5, >= 2.5.2)
+      nokogiri (~> 1.4)
+      ntlm-http (~> 0.1, >= 0.1.1)
+      webrobots (~> 0.0, >= 0.0.9)
     mime-types (1.21)
     moneta (0.7.14)
     multi_json (1.6.1)
     multi_xml (0.5.3)
+    net-http-digest_auth (1.2.1)
     net-http-persistent (2.8)
     newrelic_rpm (3.5.6.55)
+    nokogiri (1.5.6)
+    nokogiri (1.5.6-java)
+    ntlm-http (0.1.1)
     polyglot (0.3.3)
     puma (1.6.3)
       rack (~> 1.2)
@@ -120,6 +134,11 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.35)
+    unf (0.0.5)
+      unf_ext
+    unf (0.0.5-java)
+    unf_ext (0.0.6)
+    webrobots (0.1.0)
     will_paginate (3.0.4)
 
 PLATFORMS
@@ -132,6 +151,7 @@ DEPENDENCIES
   api_smith
   celerity
   jruby-openssl
+  mechanize
   newrelic_rpm
   puma
   rails (= 3.2.12)
