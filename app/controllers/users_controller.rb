@@ -10,8 +10,6 @@ class UsersController < ApplicationController
       error! :unauthenticated
     end
 
-    client.finish
-
     resource user
   end
 end

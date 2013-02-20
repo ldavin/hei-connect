@@ -16,9 +16,9 @@ module Konosys
       def fetch
         login
 
-        @browser.goto(USER_DETAILS_URL)
-        user_id = @browser.button(:id, '_id_user_hidden').value
-        student_id = @browser.button(:id, '_id_etudiant_hidden').value
+        page = @browser.get USER_DETAILS_URL
+        user_id = page.forms.first.field('_id_user_hidden').value
+        student_id = page.forms.first.field('_id_etudiant_hidden').value
 
         UserEntity.new id: @username,
                        user_id: user_id,
