@@ -10,8 +10,6 @@ class GradesController < ApplicationController
       error! :unauthenticated
     end
 
-    client.finish
-
     collection grades
   end
 end

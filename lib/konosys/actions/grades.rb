@@ -25,11 +25,14 @@ module Konosys
       def fetch
         login
 
-        @browser.goto(GRADES_URL + @session_id)
+        page = @browser.get GRADES_URL + @session_id
+        rows = page.search('div#liste_instancemodule tr')
+
         grades = Array.new
-        @browser.div(:id, 'liste_instancemodule').rows.each do |row|
-          if row.cells.size == 5
-            raw_grade = row.cells.collect { |cell| cell.text }
+        rows.each do |row|
+          tds = row.children.search('td')
+          if tds.count == 5
+            raw_grade = tds.collect { |td| td.children.children.to_s }
             grades.push GradeEntity.new program: raw_grade[0], course: raw_grade[1], semester: raw_grade[2],
                                         type: raw_grade[3], mark: raw_grade[4]
           end
