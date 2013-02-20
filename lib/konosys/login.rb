@@ -10,12 +10,15 @@ module Konosys
     end
 
     def proceed
-      @browser.goto(LOGIN_URL)
-      @browser.text_field(:id, 'Username').value = @username
-      @browser.text_field(:id, 'Password').value = @password
-      @browser.button(:name, 'Button1').click
+      page = @browser.get LOGIN_URL
 
-      if @browser.url == LOGIN_URL
+      form = page.form id: 'pc_mv_login'
+      form.Username = @username
+      form.Password = @password
+
+      page = @browser.submit form, form.buttons.first
+
+      if page.uri.to_s == LOGIN_URL
         raise Exceptions::LoginError
       else
         true

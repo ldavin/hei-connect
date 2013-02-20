@@ -4,15 +4,7 @@ module Konosys
       @username = username
       @password = password
 
-      @browser = Celerity::Browser.new
-      @browser.javascript_enabled = false
-      @browser.css = false
-    end
-
-    def finish
-      @browser.close
-      @browser.clear_cache
-      @browser.clear_cookies
+      @browser = Mechanize.new
     end
 
     private
