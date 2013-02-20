@@ -10,8 +10,6 @@ class SchedulesController < ApplicationController
       error! :unauthenticated
     end
 
-    client.finish
-
     collection schedule_weeks
   end
 end
