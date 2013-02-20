@@ -28,10 +28,10 @@ module Konosys
       def fetch
         login
 
-        @browser.goto(ABSENCES_URL_PART_1 + @user_id + ABSENCES_URL_PART_2 + @session_id + ABSENCES_URL_PART_3)
+        page = @browser.get ABSENCES_URL_PART_1 + @user_id + ABSENCES_URL_PART_2 + @session_id + ABSENCES_URL_PART_3
 
         absences = Array.new
-        data = @browser.xml.scan(/title='(\d+)\/(\d+)\/(\d+)' .+? id='col5 .+? title='(\d+):(\d+)-(\d+):(\d+)' .+? id='col7 .+? title='(.+?)' .+? id='col8 .+? title='(.+?)' .+? id='col9 .+? title='(.+?)'/xm)
+        data = page.body.force_encoding('utf-8').scan(/title='(\d+)\/(\d+)\/(\d+)' .+? id='col5 .+? title='(\d+):(\d+)-(\d+):(\d+)' .+? id='col7 .+? title='(.+?)' .+? id='col8 .+? title='(.+?)' .+? id='col9 .+? title='(.+?)'/xm)
         data.each do |raw_absence|
           date = Time.local raw_absence[2], raw_absence[1], raw_absence[0], raw_absence[3], raw_absence[4]
           absences.push(AbsenceEntity.new date: date,

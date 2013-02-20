@@ -10,8 +10,6 @@ class AbsencesController < ApplicationController
       error! :unauthenticated
     end
 
-    client.finish
-
     collection absences
   end
 end
