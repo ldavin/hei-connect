@@ -16,7 +16,6 @@ group :production do
   gem 'activerecord-jdbcpostgresql-adapter'
 end
 
-gem 'celerity'
 gem 'mechanize'
 
 gem 'puma'
