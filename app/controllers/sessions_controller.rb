@@ -10,8 +10,6 @@ class SessionsController < ApplicationController
       error! :unauthenticated
     end
 
-    client.finish
-
     collection sessions
   end
 

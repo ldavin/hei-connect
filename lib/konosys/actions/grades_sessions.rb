@@ -20,16 +20,16 @@ module Konosys
       def fetch
         login
 
+        # Step1: fetch the student id (konosys internal id)
         if @student_id.nil?
-          # Step1: fetch the student id (konosys internal id)
-          @browser.goto(GRADES_SESSIONS_STEP1_URL)
-          @student_id = @browser.button(:id, '_id_etudiant_hidden').value
+          page = @browser.get GRADES_SESSIONS_STEP1_URL
+          @student_id = page.forms.first.field('_id_etudiant_hidden').value
         end
 
         # Step2: get sessions
-        @browser.goto(GRADES_SESSIONS_STEP2_URL + @student_id)
+        page = @browser.get GRADES_SESSIONS_STEP2_URL + @student_id
         sessions = Array.new
-        data = @browser.xml.scan(/creerLignes .+ title='([^']*)'.+id=(\d+).+id='col2/i)
+        data = page.body.force_encoding('utf-8').scan(/creerLignes .+ title='([^']*)'.+id=(\d+).+id='col2/i)
         data.each do |raw_session|
           sessions.push(GradeSessionEntity.new id: raw_session[1], name: raw_session[0])
         end
