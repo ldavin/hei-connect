@@ -1,6 +1,6 @@
 module V1
   class GradesController < ::ApplicationController
-    version 1..2
+    version 1
 
     def show
       client = Konosys::Actions::Grades.new(params[:username], params[:password], params[:session_id])

@@ -1,5 +1,5 @@
 module V2
-  class GradesController < ::ApplicationController
+  class GradesController < ::V1::GradesController
     version 2
 
     def show_detailed
