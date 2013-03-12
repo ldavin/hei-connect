@@ -40,10 +40,13 @@ GEM
       httparty
       net-http-persistent
     arel (3.0.2)
+    attr_encrypted (1.2.1)
+      encryptor (>= 1.1.1)
     bouncy-castle-java (1.5.0146.1)
     builder (3.0.4)
     domain_name (0.5.7)
       unf (~> 0.0.3)
+    encryptor (1.1.3)
     erubis (2.7.0)
     hashie (1.2.0)
     hike (1.2.1)
@@ -148,6 +151,7 @@ DEPENDENCIES
   activerecord-jdbcpostgresql-adapter
   activerecord-jdbcsqlite3-adapter
   api_smith
+  attr_encrypted
   jruby-openssl
   mechanize
   newrelic_rpm

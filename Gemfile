@@ -22,3 +22,4 @@ gem 'puma'
 
 gem 'newrelic_rpm'
 gem 'rocket_pants-rpm'
+gem 'attr_encrypted'
