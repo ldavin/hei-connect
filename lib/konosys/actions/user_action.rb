@@ -1,6 +1,6 @@
 module Konosys
   module Actions
-    class User < Konosys::Action
+    class UserAction < Konosys::Action
 
       class UserEntity < APISmith::Smash
         # Regular student's ID, eg: h09123
