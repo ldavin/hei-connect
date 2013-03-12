@@ -14,6 +14,7 @@ HeiConnect::Application.routes.draw do
   api version: 2, module: 'V2' do
     get 'grades', :to => 'grades#show', :as => :grades
     get 'grades_detailed', :to => 'grades#show_detailed', :as => :grades_detailed
-    resources :users, :only => [:create]
+    post 'users', :to => 'users#create'
+    get 'users', :to => 'users#show'
   end
 end

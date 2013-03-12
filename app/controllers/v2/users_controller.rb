@@ -19,8 +19,17 @@ module V2
 
       @user.save!
 
-      resource @user.attributes.slice 'username'
+      resource @user.attributes.slice 'username', 'token'
     end
 
+    def show
+      @user = User.where(username: params[:user][:username].downcase).first!
+
+      if params[:user][:password] == @user.password
+        resource @user.attributes.slice 'username', 'token'
+      else
+        error! :unauthenticated
+      end
+    end
   end
 end
