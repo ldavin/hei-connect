@@ -17,11 +17,6 @@ module Konosys
 
       GRADES_URL = 'http://e-campus.hei.fr/KonosysProd/interfaces/interface_MesCours_notes_sessionprogramme_etudiant_Examen.aspx?id_inscriptionsessionprogramme='
 
-      def initialize(username, password, session_id)
-        super username, password
-        @session_id = session_id
-      end
-
       def fetch
         login
 

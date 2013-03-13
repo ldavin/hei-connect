@@ -23,11 +23,6 @@ module Konosys
 
       GRADES_DETAILS_URL = 'http://e-campus.hei.fr/KonosysProd/interfaces/interface_impression_courriers_etudiant_portail_etudiant.aspx?id_inscriptionsessionprogramme='
 
-      def initialize(username, password, session_id)
-        super username, password
-        @session_id = session_id
-      end
-
       def fetch
         login
 

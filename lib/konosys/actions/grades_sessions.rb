@@ -12,11 +12,6 @@ module Konosys
       GRADES_SESSIONS_STEP1_URL = 'http://e-campus.hei.fr/KonosysProd/interfaces/interface_MesCours_notes_etudiant.aspx'
       GRADES_SESSIONS_STEP2_URL = 'http://e-campus.hei.fr/KonosysProd/pageCentrale.aspx?forceRefresh=true&target=interface_MesCours_notes_etudiant_InscriptionSessionProgramme_lister_SessionProgrammeEtudiant&_id_etudiant_long='
 
-      def initialize(username, password, student_id = nil)
-        super username, password
-        @student_id = student_id
-      end
-
       def fetch
         login
 

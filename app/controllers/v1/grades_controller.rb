@@ -3,7 +3,7 @@ module V1
     version 1
 
     def show
-      client = Konosys::Actions::Grades.new(params[:username], params[:password], params[:session_id])
+      client = Konosys::Actions::Grades.new(params.slice('username', 'password', 'session_id'))
 
       begin
         grades = client.fetch

@@ -3,7 +3,7 @@ module V1
     version 1
 
     def show
-      client = Konosys::Actions::UserAction.new(params[:username], params[:password])
+      client = Konosys::Actions::UserAction.new(params.slice('username', 'password'))
 
       begin
         user = client.fetch

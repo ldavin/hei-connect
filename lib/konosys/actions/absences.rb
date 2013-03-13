@@ -19,12 +19,6 @@ module Konosys
       ABSENCES_URL_PART_2 = '&_Excuse_string=1&_ddl_sessionprogramme_string='
       ABSENCES_URL_PART_3 = '&_DateDebut_string=&_DateFin_string='
 
-      def initialize(username, password, user_id, session_id)
-        super username, password
-        @user_id = user_id
-        @session_id = session_id
-      end
-
       def fetch
         login
 

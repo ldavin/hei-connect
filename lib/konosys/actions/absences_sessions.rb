@@ -11,11 +11,6 @@ module Konosys
 
       ABSENCES_SESSIONS_URL = 'http://e-campus.hei.fr/KonosysProd/interfaces/interface_lister_MesAbsence_etudiant.aspx'
 
-      def initialize(username, password, user_id = nil)
-        super username, password
-        @user_id = user_id
-      end
-
       def fetch
         login
 
