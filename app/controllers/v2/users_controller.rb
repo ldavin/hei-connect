@@ -5,7 +5,7 @@ module V2
     def create
       @user = User.new params[:user]
 
-      client = Konosys::Actions::UserAction.new(params.slice('username', 'password'))
+      client = Konosys::Actions::UserAction.new(params[:user].slice('username', 'password'))
 
       begin
         user = client.fetch
