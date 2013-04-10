@@ -56,8 +56,14 @@ module Konosys
 
         # We parse the word document
         doc = Nokogiri::XML page.body_io
-        columns = doc.xpath('.//w:tbl[last()]/w:tr[count(w:tc) = 6]/w:tc/w:p/w:r/w:t/text()')
-        columns = columns.to_ary.collect! { |elt| elt.to_s }
+        columns = doc.xpath('.//w:tbl[last()]/w:tr[count(w:tc) = 6]/w:tc/w:p/w:r/w:t')
+        columns = columns.to_ary.collect! { |elt|
+          begin
+            elt.children.to_s
+          rescue
+            ''
+          end
+        }
 
         grades = Array.new
         current_cursus = nil
