@@ -17,22 +17,22 @@ module Konosys
         # Course's length in minutes, eg: 90
         property :length, :transformer => :to_i
         # Course's type, eg: Cours
-        property :type, :transformer => lambda { |t| t.strip }
+        property :type, :transformer => lambda { |t| t.strip unless t.nil? }
         # Course's group, eg: 4ITI
-        property :group, :transformer => lambda { |t| t.strip }
+        property :group, :transformer => lambda { |t| t.strip unless t.nil? }
         # Course's code, eg: ITI038
-        property :code, :transformer => lambda { |t| t.strip }
+        property :code, :transformer => lambda { |t| t.strip unless t.nil? }
         # Course's name, eg: Ergonomie des IHM
-        property :name, :transformer => lambda { |t| t.strip }
+        property :name, :transformer => lambda { |t| t.strip unless t.nil? }
         # Course's room, eg: ET50
-        property :room, :transformer => lambda { |t| t.strip }
+        property :room, :transformer => lambda { |t| t.strip unless t.nil? }
         # Course's TeacherEntity collection
         property :teachers
       end
 
       class TeacherEntity < APISmith::Smash
         # Teacher's name, eg: LAST-NAME First-name
-        property :name, :transformer => lambda { |t| t.strip }
+        property :name, :transformer => lambda { |t| t.strip unless t.nil? }
       end
 
       SCHEDULE_URL = 'http://e-campus.hei.fr/KonosysProd/interfaces/MonPlanning_Utilisateur_Lot.aspx'
