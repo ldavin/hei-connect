@@ -86,7 +86,7 @@ module Konosys
           sub_data = data[0].split('-')
           course.code = sub_data[0][0..-2]
           course.name = sub_data[1][1..-1]
-          course.room = data[1][6..-1]
+          course.room = data[1][5..-1]
           course.group = data[2][7..-2]
           course.type = data[3]
           course.teachers = parse_teachers(data[4]) if data.count == 5
