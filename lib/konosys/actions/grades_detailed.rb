@@ -76,7 +76,7 @@ module Konosys
 
           course, name, date, type, weight, mark = rows
           unknown = false
-          unknown = true if mark.include?('NI') or mark.include?('ABS')
+          unknown = true if mark.include?('NI') or mark.include?('ABS') or mark.include?('PC')
 
           grades.push GradeDetailedEntity.new(program: current_cursus, course: course, name: name, date: date,
                                               type: type, weight: weight, mark: mark, unknown: unknown)
