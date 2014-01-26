@@ -18,5 +18,6 @@ HeiConnect::Application.routes.draw do
     get 'sessions/:token/grades', :to => 'sessions#grades', :as => :v2_grades_sessions
     post 'users', :to => 'users#create', :as => :v2_users
     get 'users', :to => 'users#show'
+    get 'users_detailed', :to => 'users#show_detailed'
   end
 end
